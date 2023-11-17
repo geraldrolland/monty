@@ -1,9 +1,15 @@
 #include "monty.h"
-void free_stack()
+/**
+ *free_stack - free the node in the stack
+ *Return: void
+ */
+void free_stack(void)
 {
 	stack_t *ptr = store.head, *temp;
-	if (ptr == NULL)
-		return;
+/*
+	*if (ptr == NULL)
+		*return;
+	*/
 	while (ptr != NULL)
 	{
 		temp = ptr;
@@ -12,5 +18,5 @@ void free_stack()
 			ptr->prev = NULL;
 		free(temp);
 	}
-	return;
+	/*return;*/
 }

@@ -63,5 +63,4 @@ void addNode(stack_t **stack)
 	newNode->prev = NULL;
 	*stack = newNode;
 	store.head = *stack;
-	//return;
 }
