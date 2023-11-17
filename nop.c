@@ -7,5 +7,7 @@
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
-	;
+	int a = 2, b = 1;
+	int c;
+	c = a + b;
 }
