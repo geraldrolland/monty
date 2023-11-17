@@ -11,7 +11,7 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 	int i = 0;
 	instruction_t cmd[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{"swap", swap}, {"add", add}, {NULL, NULL}
+		{"swap", swap}, {"add", add}, {"nop", nop}, {NULL, NULL}
 	};
 	char *token = strtok(buffer, " \n\r\t");
 

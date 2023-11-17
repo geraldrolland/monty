@@ -7,3 +7,4 @@ push 123
 pall
 swap
 pall
+nop
