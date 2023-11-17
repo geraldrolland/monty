@@ -1,10 +1,4 @@
-push 1
-push 1024
-push 0
-push -1
-push -1024
-push 123
+push 98
+push 402
+nop Holberton
 pall
-swap
-pall
-nop
