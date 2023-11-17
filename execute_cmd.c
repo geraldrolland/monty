@@ -11,7 +11,7 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 	int i = 0;
 	instruction_t cmd[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{"swap", swap}, {"add", add}, {"nop", nop}, {NULL, NULL}
+		{"swap", swap}, {"add", add}, {"nop", NULL}, {NULL, NULL}
 	};
 	char *token = strtok(buffer, " \n\r\t");
 
@@ -21,6 +21,8 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 	{
 		if (strcmp(cmd[i].opcode, token) == 0)
 		{
+			if (strcmp("nop", token) == 0)
+				return (0);
 			token = strtok(NULL, " \n\r\t");
 			if (token != NULL)
 				store.data = _strdup(token);
