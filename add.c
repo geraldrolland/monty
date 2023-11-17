@@ -9,10 +9,10 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	unsigned int count = 0;
 	int x;
-
+	stack_t *ptr = NULL;
 	*stack = store.head;
-	stack_t *ptr = *stack;
 
+	ptr = *stack;
 	while (ptr != NULL)
 	{
 		count++;
