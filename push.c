@@ -1,4 +1,5 @@
 #include "monty.h"
+int check_integer(char *str);
 void addNode(stack_t **stack);
 /**
  *push - push elemnt in to the stack
@@ -8,15 +9,16 @@ void addNode(stack_t **stack);
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int data = atoi(store.data);
+	int data;
 
-	if ((data == 0 && strcmp(store.data, "0") != 0) || store.data == NULL)
+	if (check_integer(store.data) == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack();
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
+	data = atoi(store.data);
 	*stack = store.head;
 	if (*stack == NULL)
 	{
@@ -63,4 +65,27 @@ void addNode(stack_t **stack)
 	newNode->prev = NULL;
 	*stack = newNode;
 	store.head = *stack;
+}
+/**
+ *check_integer - check the integer
+ *@str: pointer to a string
+ *Return: 1
+ */
+int check_integer(char *str)
+{
+	int i;
+
+	if (!str)
+		return (1);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '-')
+			i++;
+		if (str[i] < '0' || str[i] > '9')
+			return (1);
+		i++;
+		continue;
+	}
+	return (0);
 }
