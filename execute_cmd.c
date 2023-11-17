@@ -26,8 +26,6 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 				store.data = _strdup(token);
 			store.data = token;
 			token = strtok(NULL, " \r\t\n");
-			if (token != NULL)
-				break;
 			cmd[i].f(stack, line_number);
 			return (0);
 		}
