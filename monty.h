@@ -41,13 +41,14 @@ typedef struct instruction_s
  *@myfile: stores pointer of a file stream of type FILE
  *@data: stores the data
  *@head: pointer to the head node of the list
- *@flag: identify error
+ *@content: line content
  */
 typedef struct glob
 {
 	FILE *myfile;
 	char *data;
 	stack_t *head;
+	char *content;
 }glob;
 glob store;
 int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer);

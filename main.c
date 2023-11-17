@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
 	while (bufsize != -1)
 	{
 		line_number++;
+		store.content = buffer;
 		execute_cmd(&stack, line_number, buffer);
 		stack = NULL;
 		bufsize = getline(&buffer, &size, file);
