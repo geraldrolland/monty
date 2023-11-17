@@ -15,10 +15,11 @@ void add(stack_t **stack, unsigned int line_number)
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
+	else
+	{
 	int x =(*stack)->n;
 	*stack=(*stack)->next;
 	(*stack)->n=(*stack)->n + x;
-	return(pop(stack, line_number));
-
-
+	pop(stack, line_number);
+	}
 }

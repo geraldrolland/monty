@@ -9,7 +9,8 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	if (store.data !=NULL)
 		return;
+	else
 	fprintf(stdout, "%d\n", (*stack)->n);
-	return;
+	//return;
 
 }
