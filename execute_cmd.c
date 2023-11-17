@@ -31,7 +31,7 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 		i++;
 		continue;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, store.data);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 	free_stack();
 	fclose(store.myfile);
 	exit(EXIT_FAILURE);
