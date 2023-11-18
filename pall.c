@@ -8,11 +8,11 @@
 void pall(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	*stack = store.head;
+	stack_t *ptr = *stack;
 
-	while (*stack != NULL)
+	while (ptr != NULL)
 	{
-		fprintf(stdout, "%d\n", (*stack)->n);
-		*stack = (*stack)->next;
+		fprintf(stdout, "%d\n", (ptr)->n);
+		ptr = (ptr)->next;
 	}
 }

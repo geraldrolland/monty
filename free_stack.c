@@ -1,14 +1,16 @@
 #include "monty.h"
 /**
  *free_stack - free the node in the stack
+ *@stack: pointer to the head pointer
  *Return: void
  */
-int free_stack(void)
+int free_stack(stack_t **stack)
 {
-	stack_t *ptr = store.head, *temp;
+	stack_t *ptr = NULL, *temp = NULL;
 
-	if (ptr == NULL)
+	if (*stack == NULL)
 		return (1);
+	ptr = *stack;
 	while (ptr != NULL)
 	{
 		temp = ptr;

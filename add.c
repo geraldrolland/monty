@@ -10,7 +10,6 @@ void add(stack_t **stack, unsigned int line_number)
 	unsigned int count = 0;
 	int x;
 	stack_t *ptr = NULL;
-	*stack = store.head;
 
 	ptr = *stack;
 	while (ptr != NULL)
@@ -21,15 +20,17 @@ void add(stack_t **stack, unsigned int line_number)
 	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		free_stack();
+		free_stack(stack);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
 	x = (*stack)->n;
+	ptr = *stack;
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n + x;
+	*stack = ptr;
 	pop(stack, line_number);
 	}
 }

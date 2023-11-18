@@ -9,7 +9,7 @@ void swap(stack_t **stack, unsigned int line_number)
 {
 	int temp;
 	unsigned int count = 0;
-	stack_t *ptr = store.head;
+	stack_t *ptr = *stack;
 
 	while (ptr != NULL)
 	{
@@ -19,17 +19,17 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		free_stack();
+		free_stack(stack);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-	*stack = store.head;
 	temp = (*stack)->n;
 	ptr = *stack;
 	*stack = (*stack)->next;
 	ptr->n = (*stack)->n;
 	(*stack)->n = temp;
+	*stack = ptr;
 	}
 }

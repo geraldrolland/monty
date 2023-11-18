@@ -14,19 +14,17 @@ void push(stack_t **stack, unsigned int line_number)
 	if (check_integer(store.data) == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_stack();
+		free_stack(stack);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
 	data = atoi(store.data);
-	*stack = store.head;
 	if (*stack == NULL)
 	{
 		*stack = malloc(sizeof(stack_t));
 		if (*stack == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
-			free_stack();
 			free(store.data);
 			fclose(store.myfile);
 			exit(EXIT_FAILURE);
@@ -34,7 +32,6 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->n = data;
 		(*stack)->prev = NULL;
 		(*stack)->next = NULL;
-		store.head = *stack;
 	}
 	else
 	{
@@ -55,7 +52,7 @@ void addNode(stack_t **stack)
 	if (newNode == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		free_stack();
+		free_stack(stack);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
@@ -64,7 +61,6 @@ void addNode(stack_t **stack)
 	(*stack)->prev = newNode;
 	newNode->prev = NULL;
 	*stack = newNode;
-	store.head = *stack;
 }
 /**
  *check_integer - check the integer

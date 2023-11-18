@@ -7,16 +7,13 @@
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	*stack = store.head;
-	if (*stack == NULL)
+	if (*stack != NULL)
+		fprintf(stdout, "%d\n", (*stack)->n);
+	else
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
-	if (store.data != NULL)
-		fprintf(stdout, "\n");
-	else
-	fprintf(stdout, "%d\n", (*stack)->n);
 
 }
