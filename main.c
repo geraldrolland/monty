@@ -64,3 +64,4 @@ char *_strdup(char *str)
 	str1[i] = '\0';
 	return (str1);
 }
+
