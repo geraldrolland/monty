@@ -1,41 +1,42 @@
 #include "monty.h"
 /**
- *execute_cmd - execute opcode instruction
- *@stack: pointer to the head pointer of the node
- *@line_number: line number
- *@buffer: line content
- *Return: 1
- */
-int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
+* execute - executes the opcode
+* @stack: head linked list - stack
+* @counter: line_counter
+* @file: poiner to monty file
+* @content: line content
+* Return: no return
+*/
+int execute_cmd(char *buffer, stack_t **stack, unsigned int line_number, FILE *file)
 {
-	int i = 0;
-	instruction_t cmd[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{"swap", swap}, {"add", add}, {"nop", NULL}, {NULL, NULL}
-	};
-	char *token = strtok(buffer, " \n\r\t");
+	instruction_t opst[] = {
+				{"push", push}, {"pall", pall}, {"pint", pint},
+				{"pop", pop},
+				{"swap", swap},
+				{"add", add},
+				{"nop", NULL},
+				{NULL, NULL}
+				};
+	unsigned int i = 0;
+	char *op;
 
-	if (token == NULL)
-		return (1);
-	while (cmd[i].opcode != NULL)
+	op = strtok(buffer, " \n\t");
+	if (op && op[0] == '#')
+		return (0);
+	store.data = strtok(NULL, " \n\t");
+	while (opst[i].opcode && op)
 	{
-		if (strcmp(cmd[i].opcode, token) == 0)
-		{
-			if (strcmp("nop", token) == 0)
-				return (0);
-			token = strtok(NULL, " \n\r\t");
-			if (token != NULL)
-				store.data = token;
-			store.data = token;
-			cmd[i].f(stack, line_number);
+		if (strcmp(op, opst[i].opcode) == 0)
+		{	opst[i].f(stack, line_number);
 			return (0);
 		}
 		i++;
-		continue;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-	free(buffer);
-	free_stack(stack);
-	fclose(store.myfile);
-	exit(EXIT_FAILURE);
+	if (op && opst[i].opcode == NULL)
+	{ fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
+		fclose(file);
+		free(buffer);
+		free_stack(stack);
+		exit(EXIT_FAILURE); }
+	return (1);
 }
