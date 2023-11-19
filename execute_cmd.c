@@ -25,7 +25,7 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 				return (0);
 			token = strtok(NULL, " \n\r\t");
 			if (token != NULL)
-				store.data = _strdup(token);
+				store.data = token;
 			store.data = token;
 			cmd[i].f(stack, line_number);
 			return (0);
@@ -34,6 +34,7 @@ int execute_cmd(stack_t **stack, unsigned int line_number, char *buffer)
 		continue;
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
+	free(buffer);
 	free_stack(stack);
 	fclose(store.myfile);
 	exit(EXIT_FAILURE);

@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	}
 	store.myfile = file;
 	bufsize = getline(&buffer, &size, file);
-	while (bufsize != -1)
+	while (bufsize > 0)
 	{
 		line_number++;
 		store.content = buffer;
@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 		buffer = NULL;
 		bufsize = getline(&buffer, &size, file);
 	}
+	free(buffer);
 	free_stack(&stack);
 	fclose(file);
 	return (0);

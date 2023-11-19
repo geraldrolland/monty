@@ -15,6 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(stack);
+		free(store.content);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
 	}
@@ -25,7 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 		if (*stack == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
-			free(store.data);
+			free(store.content);
 			fclose(store.myfile);
 			exit(EXIT_FAILURE);
 		}
@@ -52,6 +53,7 @@ void addNode(stack_t **stack)
 	if (newNode == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
+		free(store.content);
 		free_stack(stack);
 		fclose(store.myfile);
 		exit(EXIT_FAILURE);
