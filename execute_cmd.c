@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
-* execute - executes the opcode
+* execute_cmd - executes the opcode
 * @stack: head linked list - stack
-* number: line_counter
+* @number: line_counter
 * @file: poiner to monty file
 * @buffer: line content
 * Return: no return
