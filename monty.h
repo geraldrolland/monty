@@ -50,7 +50,7 @@ typedef struct glob
 	char *content;
 }glob;
 glob store;
-int execute_cmd(char *buffer, stack_t **stack, unsigned int line_number, FILE *file);
+int execute_cmd(char *buffer, stack_t **stack, unsigned int number, FILE *file);
 void pall(stack_t **stack, unsigned int line_number);
 int free_stack(stack_t **stack);
 void push(stack_t **stack, unsigned int line_number);
