@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- *pint - diplay the top element in the stack
+ *pint -this diplays the top element in the stack
  *@stack: pointer to the head pointer
  *@line_number: line number
  *Return: void
